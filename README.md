@@ -3,5 +3,10 @@
 
 ## Tech-stack
 - NextJS 13
-- TailwindCSS / Shadcn-ui
+- TailwindCSS / shadcn-ui
 - @clerk (Authentication)
+- MySQL (planetscale)
+- prisma
+- react-query
+- zustand
+- react-hook-form / zod
