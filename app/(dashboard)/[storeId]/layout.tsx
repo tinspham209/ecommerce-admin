@@ -1,4 +1,5 @@
 import { getStoreByIdAndUserId } from "@/actions";
+import Navbar from "@/components/navbar";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
@@ -20,7 +21,7 @@ export default async function DashboardLayout({
 
 	return (
 		<>
-			<nav>Navbar</nav>
+			<Navbar/>
 			Store Id: {JSON.stringify(params.storeId)}
 			<div className="">{children}</div>
 		</>

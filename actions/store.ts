@@ -30,3 +30,13 @@ export const getStoreById = async (storeId: string) => {
 
 	return store;
 };
+
+export const getStoresByUserId = async (userId: string) => {
+	const store = await prismadb.store.findMany({
+		where: {
+			userId,
+		},
+	});
+
+	return store;
+};
