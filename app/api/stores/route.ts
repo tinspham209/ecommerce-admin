@@ -14,6 +14,17 @@ export async function POST(req: Request) {
 		}
 
 		const { name } = CreateStoreSchema.parse(body);
+		const existingStore = await prismadb.store.findFirst({
+			where: {
+				name,
+			},
+		});
+		if (existingStore) {
+			return new NextResponse(
+				"Store name is already in our system. Please try another name",
+				{ status: 400 }
+			);
+		}
 		const store = await prismadb.store.create({
 			data: {
 				name,

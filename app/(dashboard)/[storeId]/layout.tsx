@@ -21,8 +21,7 @@ export default async function DashboardLayout({
 
 	return (
 		<>
-			<Navbar/>
-			Store Id: {JSON.stringify(params.storeId)}
+			<Navbar />
 			<div className="">{children}</div>
 		</>
 	);

@@ -17,16 +17,18 @@ import {
 import { CreateStorePayload, CreateStoreSchema } from "@/lib/validators";
 import { useCreateStore } from "@/queries/stores";
 import { toast } from "react-hot-toast";
+import { AxiosError } from "axios";
 export const StoreModal = () => {
 	const storeModal = useStoreModal();
 
 	const { createStore, isLoading } = useCreateStore({
 		onSuccess(data, variables) {
-			console.log("data: ", data);
 			window.location.assign(`/${data.id}`);
 		},
 		onError(error) {
-			toast.error(`Error when create store: ${JSON.stringify(error.message)}`);
+			if (error instanceof AxiosError) {
+				toast.error(`${JSON.stringify(error?.response?.data)}`);
+			}
 		},
 	});
 

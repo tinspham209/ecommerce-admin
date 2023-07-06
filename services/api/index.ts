@@ -1,4 +1,4 @@
-import { CreateStorePayload } from "@/lib/validators";
+import { CreateStorePayload, SettingFormPayload } from "@/lib/validators";
 import axios, { AxiosError } from "axios";
 import { toast } from "react-hot-toast";
 
@@ -47,11 +47,28 @@ const create = (baseURL = "/api") => {
 		return api.post(`/stores`, { ...payload });
 	};
 
+	const updateSettingStore = (payload: SettingFormPayload) => {
+		const storeId = payload.storeId;
+
+		const formattedPayload = {
+			...payload,
+		};
+		delete formattedPayload.storeId;
+
+		return api.patch(`/stores/${storeId}`, { ...formattedPayload });
+	};
+
+	const deleteStore = (payload: { storeId: string }) => {
+		return api.delete(`/stores/${payload.storeId}`);
+	};
+
 	return {
 		getRoot,
 
 		// Store
 		createStore,
+		updateSettingStore,
+		deleteStore,
 	};
 };
 
