@@ -10,5 +10,6 @@ export * from "./tooltip";
 export * from "./separator";
 export * from "./my-tooltip";
 export * from "./api-alert";
+export * from "./image-upload";
 export * from "./alert";
 export * from "./badge";
